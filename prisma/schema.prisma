@@ -15,4 +15,19 @@ model Seller {
   phone         String
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+  products Product[]
+}
+
+model Product {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String?
+  price       Decimal
+  stock       Int
+  imageUrl    String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  sellerId    Int
+  seller      Seller    @relation(fields: [sellerId], references: [id])
 }
