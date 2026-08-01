@@ -22,4 +22,13 @@ export class ProductsService {
 return product;
 
 }
+
+
+async findMyProducts(sellerId: number) {
+  return this.prisma.product.findMany({
+    where: {
+      sellerId,
+    },
+  });
+}
 }
