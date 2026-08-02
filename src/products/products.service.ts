@@ -13,11 +13,13 @@ export class ProductsService {
     private readonly prisma: PrismaService,
   ) {}
 
+
 async create(
   sellerId: number,
   createProductDto: CreateProductDto,
   file?: Express.Multer.File,
 ) {
+
   const imageUrl = file
     ? `/uploads/products/${file.filename}`
     : null;
